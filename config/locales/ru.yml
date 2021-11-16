@@ -8,7 +8,17 @@ ru:
     edit:
       title: 'Редактирование статьи'
     index:
-      title: 'Статьи'
+      title: 'Разделы'
     form:
       submit:
         '%{action} статью'
+  categories:
+    new:
+      title: 'Новая категория'
+    edit:
+      title: 'Редактирование категории'
+    index:
+      title: 'Категория'
+    form:
+      submit:
+        '%{action} категорию'

@@ -19,5 +19,8 @@ module Learnblog
     config.time_zone = 'Moscow'
     config.i18n.default_locale = :ru
     # config.eager_load_paths << Rails.root.join("extras")
+    config.assets.compile = true
+    config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
+
   end
 end

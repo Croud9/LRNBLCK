@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new(image_params)
     @picture.save
     respond_to do |format|
-      format.json { render :json => {@picture.image.url(:medium), picture_id: @picture.id} }
+      format.json { render :json => { url: @picture.image.url(:medium), picture_id: @picture.id } }
     end
   end
 

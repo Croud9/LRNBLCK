@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page])
   end
 
   def show
@@ -18,7 +18,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, success: 'Статья успешно создана '
     else
-      render :new, danger: 'Статья не создана'
+      flash.now[:danger] = 'Статья не создана'
+      render :new
     end
   end
 
@@ -29,7 +30,8 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post, success: 'Статья успешно обновлена'
     else
-      render :edit, danger: 'Статья не обновлена'
+      flash.now[:danger] = 'Статья не обновлена'
+      render :edit
     end
   end
 
@@ -45,6 +47,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    params.require(:post).permit(:title, :body, :image, :all_tags, :summary, :category_id)
   end
 end
